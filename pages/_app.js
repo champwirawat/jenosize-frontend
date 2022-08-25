@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import MainLayout from "../layouts/MainLayout";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const Layout = Component.Layout || EmptyLayout;
+  return (
+    <MainLayout>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </MainLayout>
+  );
 }
 
-export default MyApp
+const EmptyLayout = ({ children }) => <>{children}</>;
+
+export default MyApp;
