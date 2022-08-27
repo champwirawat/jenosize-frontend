@@ -18,6 +18,10 @@ module.exports = {
         DEFAULT: colors.red[500],
         dark: colors.red[600],
       },
+      warning: {
+        DEFAULT: colors.amber[400],
+        dark: colors.yellow[500],
+      },
       detail: {
         DEFAULT: colors.gray[400],
       },

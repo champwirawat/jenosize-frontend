@@ -1,4 +1,5 @@
 import MainLayout from "../layouts/MainLayout";
+import { wrapper } from "../redux/store";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -14,4 +15,4 @@ function MyApp({ Component, pageProps }) {
 
 const EmptyLayout = ({ children }) => <>{children}</>;
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

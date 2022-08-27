@@ -30,6 +30,19 @@ span {
   height: unset !important;
 }
 
+button {
+  @apply inline-block px-6 py-2.5 transition duration-150 ease-in-out font-medium leading-tight rounded shadow-md text-white hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg;
+}
+button.primary {
+  @apply bg-primary hover:bg-primary-dark focus:bg-primary-dark active:bg-primary-dark;
+}
+button.danger {
+  @apply bg-danger hover:bg-danger-dark focus:bg-danger-dark active:bg-danger-dark;
+}
+button.warning {
+  @apply bg-warning hover:bg-warning-dark focus:bg-warning-dark active:bg-warning-dark;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

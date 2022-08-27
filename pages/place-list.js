@@ -1,25 +1,9 @@
-import axios from "axios";
 import Image from "next/image";
-import { useState } from "react";
 import { connect } from "react-redux";
 import Button from "../components/Button";
-import TextInput from "../components/TextInput";
-import { addPlace } from "../redux/actions/placeAction";
+import { deletePlace } from "../redux/actions/placeAction";
 
-const Home = ({ addPlace }) => {
-  const [textSearch, setTextSearch] = useState("");
-  const [placeList, setPlaceList] = useState([]);
-
-  const placeSearch = async () => {
-    const resp = await axios({
-      method: "get",
-      url: `/api/place-search?search=${textSearch}`,
-      headers: {},
-    });
-    console.log(resp.data);
-    setPlaceList(resp.data);
-  };
-
+const PlaceList = ({ placeList, deletePlace }) => {
   const loadPlaceImg = (photoReference) => {
     const apiKey = "AIzaSyCm_4HQFULzz6v-9SO34BAs2YJI6XmB_64";
     return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${photoReference}&key=${apiKey}`;
@@ -27,14 +11,13 @@ const Home = ({ addPlace }) => {
 
   return (
     <>
-      <div className="flex gap-2 p-2">
-        <TextInput onChange={(e) => setTextSearch(e.target.value)} />
-        <Button onClick={placeSearch}>Search</Button>
-      </div>
       <div className="place-container p-2">
         <div>
-          {placeList.map((data) => (
-            <div key={data.place_id} className="md:flex gap-4 py-4 border-b-2">
+          {placeList.map((data, index) => (
+            <div
+              key={`${data.place_id}${index}`}
+              className="md:flex gap-4 py-4 border-b-2"
+            >
               <div className="w-full max-w-md">
                 <Image
                   loader={() =>
@@ -53,8 +36,8 @@ const Home = ({ addPlace }) => {
                 </p>
                 <p>{data.formatted_address}</p>
                 <div className="flex justify-center md:justify-start mt-2">
-                  <Button color="warning" onClick={() => addPlace(data)}>
-                    Keep
+                  <Button color="danger" onClick={() => deletePlace(data)}>
+                    Delete
                   </Button>
                 </div>
               </div>
@@ -78,6 +61,6 @@ const Home = ({ addPlace }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = { addPlace };
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const mapStateToProps = (state) => ({ placeList: state.place.list });
+const mapDispatchToProps = { deletePlace };
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceList);
