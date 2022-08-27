@@ -44,7 +44,7 @@ const ShowType = ({ endWith, Icon }) => {
   };
 
   return (
-    <span className={`cursor-pointer ${active ? "text-primary" : ""}`} onClick={routeTo}>
+    <span className={`cursor-pointer ${active ? "text-primary" : "text-detail"}`} onClick={routeTo}>
       <Icon size={20} />
     </span>
   );

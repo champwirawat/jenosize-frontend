@@ -1,9 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaRegCommentAlt, FaRegGem, FaRegThumbsUp } from "react-icons/fa";
 import { FiGift } from "react-icons/fi";
-import EngagementLayout from "./EngagementLayout";
 import Button from "../components/Button";
-import React, { Fragment } from "react";
+import EngagementLayout from "./EngagementLayout";
 
 const BtSelectDataType = ({ title, Icon, dataType, setDataType }) => {
   return (
