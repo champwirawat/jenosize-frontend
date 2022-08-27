@@ -6,6 +6,7 @@ const Button = ({
   small = false,
   onClick,
   IconStart,
+  className,
 }) => {
   return (
     <>
@@ -13,7 +14,7 @@ const Button = ({
         type="button"
         className={`bt-${color} ${rounded ? "bt-rounded" : ""} ${
           outline ? "bt-outline" : "bt-default"
-        } ${small ? "bt-small" : ""}`}
+        } ${small ? "bt-small" : ""} ${className}`}
         onClick={onClick}
       >
         {IconStart && <IconStart />}

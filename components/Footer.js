@@ -33,14 +33,18 @@ const LinkBox = ({ path, title, Icon }) => {
 
 // ----- Page -----
 const Footer = () => {
+  const router = useRouter();
+
   return (
-    <footer className="flex justify-around py-3 border-t-2 text-detail">
-      <LinkBox path="/" title="Place Search" Icon={FaMapMarkedAlt} />
-      <LinkBox path="/place-list" title="Place List" Icon={FaListUl} />
-      <LinkBox path="/report" title="Report" Icon={FaTelegramPlane} />
-      <LinkBox path="/statistic" title="Statistics" Icon={FaClock} />
-      <LinkBox path="/setting" title="Setting" Icon={FaCog} />
-    </footer>
+    !router.pathname.startsWith("/detail") && (
+      <footer className="flex justify-around py-3 border-t-2 text-detail">
+        <LinkBox path="/" title="Place Search" Icon={FaMapMarkedAlt} />
+        <LinkBox path="/place-list" title="Place List" Icon={FaListUl} />
+        <LinkBox path="/report" title="Report" Icon={FaTelegramPlane} />
+        <LinkBox path="/statistic" title="Statistics" Icon={FaClock} />
+        <LinkBox path="/setting" title="Setting" Icon={FaCog} />
+      </footer>
+    )
   );
 };
 

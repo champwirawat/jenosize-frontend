@@ -1,8 +1,16 @@
 import EngagementWeeklyLayout from "../../../../../layouts/EngagementWeeklyLayout";
-import { FaRegCommentAlt, FaRegGem, FaRegThumbsUp } from "react-icons/fa";
+import {
+  FaRegCommentAlt,
+  FaRegGem,
+  FaRegThumbsUp,
+  FaUserAlt,
+} from "react-icons/fa";
 import { FiGift } from "react-icons/fi";
+import { useRouter } from "next/router";
 
 const EngagementWeeklyList = ({ dataType }) => {
+  const router = useRouter();
+
   const dataTypeIconMap = {
     Like: FaRegThumbsUp,
     Comment: FaRegCommentAlt,
@@ -23,11 +31,16 @@ const EngagementWeeklyList = ({ dataType }) => {
     <>
       <div className="p-2 px-4">
         {list.map((data, index) => (
-          <div key={index} className="flex items-center gap-2 mb-2">
-            <div className="flex justify-center items-center rounded-full bg-black w-7 h-7 text-white">
+          <div key={index} className="flex items-center gap-2 mb-2" onClick={()=> router.push(`/detail${router.pathname}`)}>
+            <div className="flex justify-center items-center rounded-full bg-black text-sm w-6 h-6 text-white">
               {index + 1}
             </div>
-            <div className="flex-1 flex border rounded p-2">
+            <div className="flex-1 flex items-center border rounded p-2">
+              <div className="flex justify-center items-center bg-gray-300 rounded-full w-9 h-9 mr-2">
+                <span className="text-white">
+                  <FaUserAlt />
+                </span>
+              </div>
               <div className="flex-1">
                 <p className="font-bold">{data.name}</p>
                 <p className="text-xs text-detail">Daily Report</p>
