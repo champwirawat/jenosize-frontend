@@ -21,16 +21,17 @@ const StatisticLayout = ({ children }) => {
         <div>|</div>
         <div
           className={
-            router.pathname == "/statistic/engagement"
+            router.pathname.startsWith("/statistic/engagement")
               ? "text-primary font-bold"
               : "font-bold"
           }
         >
-          <Link href="/statistic/engagement">
+          <Link href="/statistic/engagement/daily/graph">
             <a>Engagement</a>
           </Link>
         </div>
       </div>
+      
       {children}
     </>
   );

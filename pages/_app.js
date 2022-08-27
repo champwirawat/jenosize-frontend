@@ -3,16 +3,25 @@ import { wrapper } from "../redux/store";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const Layout = Component.Layout || EmptyLayout;
   return (
     <MainLayout>
-      <Layout>
+      <Layout Component={Component}>
         <Component {...pageProps} />
       </Layout>
     </MainLayout>
   );
 }
 
-const EmptyLayout = ({ children }) => <>{children}</>;
+const Layout = ({ Component, children }) => {
+  if (Component.Layout) {
+    return (
+      <Layout Component={Component.Layout}>
+        <Component.Layout>{children}</Component.Layout>
+      </Layout>
+    );
+  } else {
+    return <>{children}</>;
+  }
+};
 
 export default wrapper.withRedux(MyApp);

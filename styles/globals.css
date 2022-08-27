@@ -31,16 +31,32 @@ span {
 }
 
 button {
-  @apply inline-block px-6 py-2.5 transition duration-150 ease-in-out font-medium leading-tight rounded shadow-md text-white hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg;
+  @apply flex gap-1 justify-center items-center;
+  @apply px-6 py-2.5 text-xs uppercase transition duration-150 ease-in-out font-medium leading-tight rounded text-white;
 }
-button.primary {
-  @apply bg-primary hover:bg-primary-dark focus:bg-primary-dark active:bg-primary-dark;
+button.bt-small {
+  @apply px-4 py-1.5;
 }
-button.danger {
-  @apply bg-danger hover:bg-danger-dark focus:bg-danger-dark active:bg-danger-dark;
+button.bt-primary.bt-outline {
+  @apply border-2 border-primary text-primary hover:bg-black hover:bg-opacity-5;
 }
-button.warning {
-  @apply bg-warning hover:bg-warning-dark focus:bg-warning-dark active:bg-warning-dark;
+button.bt-danger.bt-outline {
+  @apply border-2 border-danger text-danger hover:bg-black hover:bg-opacity-5;
+}
+button.bt-warning.bt-outline {
+  @apply border-2 border-warning text-warning hover:bg-black hover:bg-opacity-5;
+}
+button.bt-primary.bt-default {
+  @apply bg-primary hover:bg-primary-dark;
+}
+button.bt-danger.bt-default {
+  @apply bg-danger hover:bg-danger-dark;
+}
+button.bt-warning.bt-default {
+  @apply bg-warning hover:bg-warning-dark;
+}
+button.bt-rounded {
+  @apply rounded-full;
 }
 
 @media (prefers-color-scheme: dark) {

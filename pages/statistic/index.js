@@ -1,7 +1,7 @@
 import StatisticLayout from "../../layouts/StatisticLayout";
 
 const Submission = () => {
-  return <>Submission</>;
+  return <></>;
 };
 
 Submission.Layout = StatisticLayout;
