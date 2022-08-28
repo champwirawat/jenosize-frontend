@@ -10,6 +10,7 @@ export default async function handler(req, res) {
         url: `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${query}&key=${apiKey}`,
         headers: {},
       });
+      console.info("RESP : ", resp.data);
       res.status(200).json(resp.data.results);
     } catch (err) {
       console.error("ERROR : ", err);

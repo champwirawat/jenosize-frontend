@@ -1,6 +1,6 @@
 import moment from "moment";
 import { useRouter } from "next/router";
-import { FaChartBar, FaListUl } from "react-icons/fa";
+import { FaChartBar, FaListUl, FaArrowDown } from "react-icons/fa";
 import { FiUpload } from "react-icons/fi";
 import StatisticLayout from "./StatisticLayout";
 
@@ -44,13 +44,26 @@ const ShowType = ({ endWith, Icon }) => {
   };
 
   return (
-    <span className={`cursor-pointer ${active ? "text-primary" : "text-detail"}`} onClick={routeTo}>
+    <span
+      className={`cursor-pointer ${active ? "text-primary" : "text-detail"}`}
+      onClick={routeTo}
+    >
       <Icon size={20} />
     </span>
   );
 };
 
 const EngagementLayout = ({ children }) => {
+  const currentDate = new Date();
+  const days = ["S", "M", "T", "W", "TH", "F", "S"];
+  const dayList = [];
+
+  const day = moment(currentDate).format("d");
+  const startDay = moment(currentDate).add(-day, "days");
+  for (let i = 0; i < 7; i++) {
+    dayList[i] = moment(startDay.toDate()).add(i, "days").format("DD-MM-YYYY");
+  }
+
   return (
     <>
       {/* --- select datetype --- */}
@@ -67,8 +80,26 @@ const EngagementLayout = ({ children }) => {
       </div>
 
       {/* --- calendar --- */}
-      <div className="p-4">
-        <p className="text-center">Calendar</p>
+      <div className="p-2 text-sm flex">
+        <div className="flex-1 flex justify-around">
+          {days.map((data, index) => (
+            <div key={index} className="text-center">
+              <p className="text-xs font-bold">{data}</p>
+              <div
+                className={`rounded-full w-7 h-7 p-1 ${
+                  dayList[index] == moment(currentDate).format("DD-MM-YYYY") &&
+                  "bg-primary text-white"
+                }`}
+              >
+                <p>{moment(dayList[index], "DD-MM-YYYY").format("DD")}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-primary flex items-center">
+          <FaArrowDown />
+          <p>Today</p>
+        </div>
       </div>
       <hr />
 
