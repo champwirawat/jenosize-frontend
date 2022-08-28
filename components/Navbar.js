@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="bg-primary text-white px-3 py-5 flex items-center">
       {router.pathname.startsWith("/detail") ? (
         <>
-          <p onClick={() => router.back()}>{`< Back`}</p>
+          <p className="cursor-pointer" onClick={() => router.back()}>{`< Back`}</p>
         </>
       ) : (
         <FaHome size={22} />
